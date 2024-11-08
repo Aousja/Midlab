@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air University</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Rye&display=swap');
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #003366; /* Dark blue */
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-bar {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            color: rgb(253, 250, 250);
+            font-size: 16px;
+        }
+        .info {
+            font-size: 14px;
+        }
+        .info a {
+            color: white; /* Set the link color to white */
+            text-decoration: none; /* Remove underline */
+            margin-left: 8px;
+        }
+        .info a:first-child {
+            margin-left: 0; /* Remove left margin for the first item */
+        }
+        .info a:hover {
+            text-decoration: underline; /* Optional: underline on hover */
+        }
+        .navbar {
+            position: sticky; /* Make navbar sticky */
+            top: 0; /* Stick to the top */
+            z-index: 999; /* Ensure it stays above other content */
+        }
+        .navbar-nav .nav-item a {
+            color: black; /* Set the link color to black */
+            text-decoration: none; /* Remove underline */
+        }
+        .navbar-nav .nav-item a:hover {
+            text-decoration: underline; /* Optional: underline on hover */
+        }
+
+        #heading{
+                  
+                  font-size: 80px;
+                  padding-bottom: 10%;
+                  font-style: bold;
+                  position: absolute;
+                  font-family: "Dela Gothic One", sans-serif;
+      
+              }
+              .bg-image {
+                  position: relative;
+                  overflow: hidden; /* Hide overflow to maintain layout */
+              }
+      
+              .bg-image img {
+                  width: 100%; /* Make the image full width */
+                  height: auto; /* Maintain aspect ratio */
+                  display: block; /* Remove bottom space */
+              }
+      
+              .bg-image h1, .bg-image p {
+                  position: absolute; /* Position text absolutely */
+                  top: 50%; /* Center vertically */
+                  left: 50%; /* Center horizontally */
+                  transform: translate(-50%, -50%); /* Adjust position */
+                  color: rgb(255, 255, 255); /* Ensure text is white for contrast */
+                  text-align: center; /* Center the text */
+                  z-index: 1; /* Ensure text is above the image */
+              }
+      
+              .bg-image::after {
+                  content: ""; /* Create a pseudo-element */
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  background: rgba(0, 0, 0, 0.5); /* Optional: Add a dark overlay for better text visibility */
+                  z-index: 0; /* Place the overlay behind the text */
+              }
+      
+              .mission-section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .mission-section h2 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .mission-section p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn-custom {
+            background-color: rgb(0, 122, 204);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .btn-custom:hover {
+            background-color: rgb(0, 79, 170);
+        }
+        .news-card {
+            border: none;
+            transition: transform 0.2s;
+        }
+        .news-card:hover {
+            transform: scale(1.02);
+        }
+        .news-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .news-category {
+            font-size: 0.85rem;
+            color: #d9534f; /* Bootstrap 'danger' color */
+            font-weight: bold;
+        }
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .academics-heading {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .academics-heading h1 {
+            font-weight: bold;
+        }
+        .academics-heading p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .card-link {
+            color: #0056b3;
+            font-weight: bold;
+        }
+        .school-links a {
+            color: #007bff; /* Bootstrap's default link color */
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+        .school-links a:hover {
+            text-decoration: underline;
+        }
+        .school-links a:not(:last-child)::after {
+            content: '|';
+            padding-left: 10px;
+            color: #000;
+        }
+        .header-text {
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+        }
+        .btn-custom {
+            background-color: #1022c8;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .btn-custom:hover {
+            background-color: #1022c8;
+        }
+        .section-title {
+            font-weight: bold;
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .stat {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #000;
+        }
+        .stat-desc {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .divider {
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        .btn-custom {
+            background-color: #1022c8;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .btn-custom:hover {
+            background-color: #1022c8;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .event-card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .event-card:hover {
+            transform: scale(1.02);
+        }
+        .event-image {
+            height: 250px;
+            object-fit: cover;
+        }
+        .date-badge {
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+            padding: 5px 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 4px;
+        }
+        .event-type {
+            color: #c8102e;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        .event-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+        }
+        .footer {
+      background-color: #f8f9fa;
+      padding: 30px 0;
+    }
+    .footer h6 {
+      font-weight: bold;
+      color: #0056b3;
+    }
+    .footer a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .footer .social-icons i {
+      color: #0056b3;
+      font-size: 1.5em;
+      margin-right: 15px;
+    }
+    .footer-bottom {
+      background-color: #0056b3;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">Air University</div>
+        <div class="info">
+            Information for: 
+            <a href="#">Students</a> | 
+            <a href="#">Faculty & Staff</a> | 
+            <a href="#">Families</a> | 
+            <a href="#">Visitors</a> | 
+            <a href="#">Alumni</a>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <!-- Use d-flex and justify-content-center to horizontally center the navbar items -->
+            <ul class="navbar-nav d-flex justify-content-center flex-row w-100 ">
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">CAMPUS LIFE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">ACADEMICS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">RESULTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">FACULTY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">Research</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">ALUMINI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item mx-3" href="#">NEWS</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="bg-image" style="
+    background-image: url('https://wpassets.graana.com/blog/wp-content/uploads/2023/05/Air-Univ.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px; /* Adjust height as needed */
+">
+    <div class="container">
+        <h1 id="heading">Welcome to Air University</h1>
+    </div>
+</section>
+    <center> <h3 style="background-color: #003366; color: antiquewhite;">Explore Air University</h3></center>
+
+    <section class="mission-section">
+        <div class="container">
+            <h2>A Societal Mission</h2>
+            <p>
+                Stanford was founded almost 150 years ago on a bedrock of societal purpose. Our mission is to
+                contribute to the world by educating students for lives of leadership and contribution with
+                integrity; advancing fundamental knowledge and cultivating creativity; leading in pioneering
+                research for effective clinical therapies; and accelerating solutions and amplifying their impact.
+            </p>
+            <a href="#" class="btn btn-custom">More about Stanford</a>
+        </div>
+    </section>
+
+    <section style="background-color: #f1f0f0;">
+    <div class="campus container my-5">
+        <div class="text-center">
+        <h2 class="fw-bold">Campus News</h2>
+        <p class="text-muted">Stories about people, research, and innovation across the Farm</p></div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <img src="https://media.istockphoto.com/id/1307457287/photo/group-of-happy-students-looking-at-exam-results-while-standing-at-university-hallway.jpg?s=612x612&w=0&k=20&c=yIdSjLDNZaCOpKtvsK-UlI2ZYcN5r2heWp4vJtj9aVU=" alt="News Image 1" class="card-img-top">
+                    <div class="card-body">
+                        <p class="news-category">HEALTH & MEDICINE</p>
+                        <p class="news-title">Stanford launches center focused on human and planetary health</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <img src="https://st2.depositphotos.com/3591429/10893/i/450/depositphotos_108939274-stock-photo-diversity-students-studying-together-in.jpg" alt="News Image 2" class="card-img-top">
+                    <div class="card-body">
+                        <p class="news-category">BUSINESS</p>
+                        <p class="news-title">Mapping the maze where the IRS could find billions in unpaid taxes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <img src="https://st2.depositphotos.com/3591429/8024/i/450/depositphotos_80243074-stock-photo-college-students-using-wireless-devices.jpg" alt="News Image 3" class="card-img-top">
+                    <div class="card-body">
+                        <p class="news-category">LAW</p>
+                        <p class="news-title">Nate Persily’s mini museum of election history</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <img src="https://st5.depositphotos.com/62628780/72551/i/450/depositphotos_725519874-stock-photo-portrait-diversity-students-library-studying.jpg" alt="News Image 2" class="card-img-top">
+                    <div class="card-body">
+                        <p class="news-category">BUSINESS</p>
+                        <p class="news-title">Mapping the maze where the IRS could find billions in unpaid taxes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <img src="https://st2.depositphotos.com/1594308/8524/i/450/depositphotos_85241216-stock-photo-college-students-in-casual-wear.jpg" alt="News Image 3" class="card-img-top">
+                    <div class="card-body">
+                        <p class="news-category">LAW</p>
+                        <p class="news-title">Nate Persily’s mini museum of election history</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <img src="https://cdn.create.vista.com/api/media/small/514464036/stock-photo-college-students-studying-university-campus-outdoor" alt="News Image 1" class="card-img-top">
+                    <div class="card-body">
+                        <p class="news-category">HEALTH & MEDICINE</p>
+                        <p class="news-title">Stanford launches center focused on human and planetary health</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <!-- Section Header -->
+            <div class="academics-heading">
+                <h1>Academics</h1>
+                <p>Preparing students to make meaningful contributions to society as engaged citizens and leaders in a complex world</p>
+            </div>
+    
+            <!-- Academics Section -->
+            <div class="row g-4">
+                <!-- Card 1: Undergraduate Education -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="https://static.toiimg.com/thumb/msid-81481245,width-400,resizemode-4/81481245.jpg" class="card-img-top" alt="Undergraduate Education">
+                        <div class="card-body">
+                            <h5 class="card-title">Undergraduate Education</h5>
+                            <p class="card-text">Rich learning experiences that provide a broad liberal arts foundation and deep subject-area expertise.</p>
+                            <a href="#" class="card-link">Undergraduate Education &gt;</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card 2: Graduate Education -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="https://mcgrath.nd.edu/assets/571771/400x/vision.jpg" class="card-img-top" alt="Graduate Education">
+                        <div class="card-body">
+                            <h5 class="card-title">Graduate Education</h5>
+                            <p class="card-text">Unsurpassed opportunities to participate in the advancement of entire fields of knowledge.</p>
+                            <a href="#" class="card-link">Graduate Education &gt;</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card 3: Driving Impact -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="https://www.collegemagazine.com/wp-content/uploads/2015/10/640px-Roy_Gustav_Cullen_Building-400x300.jpeg" class="card-img-top" alt="Driving Impact">
+                        <div class="card-body">
+                            <h5 class="card-title">Driving Impact</h5>
+                            <p class="card-text">Continuing adult education, executive and professional programs, and programs for K-12 students.</p>
+                            <a href="#" class="card-link">Lifelong Learning &gt;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <div class="container text-center mt-5">
+            <div class="header-text">
+                Seven schools in which to pursue your passions
+            </div>
+            <div class="school-links">
+                <a href="#">Medicine</a>
+                <a href="#">Law</a>
+                <a href="#">Humanities & Sciences</a>
+                <a href="#">Engineering</a>
+                <a href="#">Education</a>
+                <a href="#">Sustainability</a>
+                <a href="#">Business</a>
+            </div>
+            <div class="mt-4">
+                <button class="btn btn-custom">More about academics</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container text-center mt-5">
+            <div class="section-title">
+                Research
+            </div>
+            <div class="section-subtitle">
+                Driving discoveries vital to our world, our health, and our intellectual life
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat">15 Institutes</div>
+                    <div class="stat-desc">cross disciplinary boundaries</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat">20 Libraries</div>
+                    <div class="stat-desc">hold over 12 million items</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat">$1.98 Billion</div>
+                    <div class="stat-desc">sponsored research budget</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <button class="btn btn-custom mt-3">More about research</button>
+        </div>
+    </section>
+
+    <section>
+        <div class="container text-center mt-5">
+            <div class="section-title">
+                Upcoming Events
+            </div>
+            <div class="row">
+                <!-- Event Card 1 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card event-card">
+                        <div class="position-relative">
+                            <img src="https://news.superior.edu.pk/wp-content/uploads/2024/07/hghgf.jpg" class="card-img-top event-image" alt="Event 1">
+                            <div class="date-badge">NOV<br>08</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-type">Exhibition</div>
+                            <div class="event-title">Branner Library Monthly</div>
+                            <p><b>A special film viewing event The Making of a Japanese: A conversation with Ema Ryan Yamazaki on her documentary film on a Japanese elementary school
+                            </b></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event Card 2 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card event-card">
+                        <div class="position-relative">
+                            <img src="https://www.universityworldnews.com/images/articles/20240912154922683_5.jpg" class="card-img-top event-image" alt="Event 2">
+                            <div class="date-badge">NOV<br>08</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-type">Film/Screening</div>
+                            <div class="event-title">A special film viewing</div>
+                            <p><b>A special film viewing event The Making of a Japanese: A conversation with Ema Ryan Yamazaki on her documentary film on a Japanese elementary school
+                            </b></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event Card 3 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card event-card">
+                        <div class="position-relative">
+                            <img src="https://iiui.edu.pk/wp-content/uploads/2023/11/MoU-Signed-Between-IIUI-Kyungdong-University-South-Korea.jpg" class="card-img-top event-image" alt="Event 3">
+                            <div class="date-badge">NOV<br>08</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-type">Lecture/Presentation/Talk</div>
+                            <div class="event-title">Ukraine Between Empire</div>
+                            <p><b>A special film viewing event The Making of a Japanese: A conversation with Ema Ryan Yamazaki on her documentary film on a Japanese elementary school
+                            </b></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event Card 4 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card event-card">
+                        <div class="position-relative">
+                            <img src="https://iiui.edu.pk/wp-content/uploads/2023/11/MoU-Signed-Between-IIUI-Kyungdong-University-South-Korea-9.jpg" class="card-img-top event-image" alt="Event 4">
+                            <div class="date-badge">NOV<br>08</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-type">Tour</div>
+                            <div class="event-title">Public Tour | Spirit House</div>
+                            <p><b>A special film viewing event The Making of a Japanese: A conversation with Ema Ryan Yamazaki on her documentary film on a Japanese elementary school
+                            </b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <div class="container-fluid footer">
+            <div class="row">
+              <div class="col-md-2">
+                <h6>SCHOOLS</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#">Business</a></li>
+                  <li><a href="#">Education</a></li>
+                  <li><a href="#">Engineering</a></li>
+                  <li><a href="#">Humanities & Sciences</a></li>
+                  <li><a href="#">Law</a></li>
+                  <li><a href="#">Medicine</a></li>
+                  <li><a href="#">Sustainability</a></li>
+                </ul>
+              </div>
+              <div class="col-md-2">
+                <h6>ACADEMICS</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#">Undergraduate Majors</a></li>
+                  <li><a href="#">Graduate Programs</a></li>
+                </ul>
+              </div>
+              <div class="col-md-2">
+                <h6>HEALTH CARE</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#">Health Care</a></li>
+                  <li><a href="#">Children's Health</a></li>
+                </ul>
+              </div>
+              <div class="col-md-2">
+                <h6>ABOUT AIR UNIVERSITY</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#">Facts</a></li>
+                  <li><a href="#">History</a></li>
+                  <li><a href="#">Accreditation</a></li>
+                </ul>
+              </div>
+              <div class="col-md-2">
+                <h6>RESOURCES</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#">Campus Map</a></li>
+                  <li><a href="#">Community Engagement</a></li>
+                  <li><a href="#">Directory</a></li>
+                  <li><a href="#">Profiles</a></li>
+                </ul>
+              </div>
+              <div class="col-md-2">
+                <div class="mb-2">
+                  <a href="#" class="btn btn-outline-primary btn-block">Applying</a>
+                </div>
+                <div class="mb-2">
+                  <a href="#" class="btn btn-outline-primary btn-block">Visiting</a>
+                </div>
+                <div class="mb-2">
+                  <a href="#" class="btn btn-outline-primary btn-block">Giving</a>
+                </div>
+                <div class="mb-2">
+                  <a href="#" class="btn btn-outline-primary btn-block">Careers</a>
+                </div>
+                <div class="mb-2">
+                  <a href="#" class="btn btn-outline-primary btn-block">Faculty Positions</a>
+                </div>
+                <div>
+                  <a href="#" class="btn btn-outline-primary btn-block">Contact</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-bottom ">
+            <div class="container">
+              <div class="d-flex justify-content-between">
+                <span>Air University</span>
+                <span>
+                  <a href="#" class="text-white mr-3">Home</a>
+                  <a href="#" class="text-white mr-3">Maps & Directions</a>
+                  <a href="#" class="text-white mr-3">Emergency Info</a>
+                </span>
+                <span>
+                  <a href="#" class="text-white mr-3">Terms of Use</a>
+                  <a href="#" class="text-white mr-3">Privacy</a>
+                  <a href="#" class="text-white mr-3">Accessibility</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FontAwesome for social icons -->
+          <div class="text-center my-3">
+            <a href="#" class="text-primary"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-primary"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-primary"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-primary"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="text-primary"><i class="fab fa-apple"></i></a>
+          </div>
+          
+         
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
